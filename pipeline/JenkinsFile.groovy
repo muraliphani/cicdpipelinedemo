@@ -2,14 +2,22 @@
 
 node()
 	{
-		def mvnHome
+		def mavenHome
 		
+		
+		withEnv([
+
+                'MAVEN_HOME=' + mavenHome,
+
+                "PATH=${mavenHome}/bin:${env.PATH}"
+
+		]) 
 		stage("Build&UT")
 		{
 		checkout scm
-		mvnHome = tool(name: 'maven 3.5', type: 'maven');
+		mavenHome = tool(name: 'maven 3.5', type: 'maven');
 		sh"cd /devtest1"
-		sh "${mvnHome}/bin/mvn install"
+		sh "${mavenHome}/bin/mvn install"
 		}
 	}	
  
