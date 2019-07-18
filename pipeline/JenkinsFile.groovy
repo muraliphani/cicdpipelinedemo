@@ -7,9 +7,9 @@ node()
 		stage("Build&UT")
 		{
 		checkout scm
-		mavenHome = tool(name: 'maven 3.6', type: 'maven');
+		mavenHome = tool(name: 'maven 3.5', type: 'maven');
 		sh"cd /devtest1"
-		sh "${mvnHome}/bin/mvn install"
+		sh "${mavenHome}/bin/mvn install"
 		}
 	}	
  
