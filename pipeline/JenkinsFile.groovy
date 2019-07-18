@@ -8,6 +8,7 @@ node()
 		
 		stage("Checkout SCM"){
 			checkout scm
+			mavenHome = tool(name: 'maven 3.6', type: 'maven');
 			
 		}
 		
