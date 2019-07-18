@@ -20,7 +20,7 @@ node()
 		]){
 
 		stage("Build & UT"){
-		sh"cd /devtest1"
+		sh"cd devtest1"
 		sh "${mavenHome}/bin/mvn install"
 		}
 		}
