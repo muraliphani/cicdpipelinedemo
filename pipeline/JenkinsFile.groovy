@@ -3,31 +3,21 @@
 node()
 	{
 		def mavenHome
-		
-			
-		
 		stage("Checkout SCM"){
 			checkout scm
-			mavenHome = tool(name: 'maven-3.5.0', type: 'maven');
-			
 		}
 		
-		withEnv([
-
-                'MAVEN_HOME=' + mavenHome,
-
-                "PATH=${mavenHome}/bin:${env.PATH}"
-
-		]){
-
+		withEnv(["JAVA_HOME=${ tool 'jdk-1.8.0_64bits' }", 
+				"PATH+MAVEN=${tool 'maven-3.5.2'}/bin:${env.JAVA_HOME}/bin"
+				])
+				{
 		stage("Build & UT"){
 		sh"cd devtest1"
-		sh "${mavenHome}/bin/mvn install"
+		sh "mvn --batch-mode -V -U -e clean deploy -Dsurefire.useFile=false"
+
 		}
 		}
 		
-	
-		
-}	
+	}	
  
 
