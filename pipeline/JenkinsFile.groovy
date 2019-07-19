@@ -7,8 +7,7 @@ node()
 			checkout scm
 		}
 		
-		withEnv(["JAVA_HOME=${ tool 'jdk-1.8.0_64bits' }", 
-				"PATH+MAVEN=${tool 'maven-3.5.2'}/bin:${env.JAVA_HOME}/bin"
+		withEnv([ "PATH+MAVEN=${tool 'maven-3.5.2'}/bin:${env.JAVA_HOME}/bin"
 				])
 				{
 		stage("Build & UT"){
