@@ -12,7 +12,6 @@ node()
 		sh "${mvnHome}/bin/mvn clean"
 
 		}
-		
 	}	
  
 
