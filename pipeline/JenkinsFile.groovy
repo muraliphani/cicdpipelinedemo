@@ -9,7 +9,7 @@ node()
 		stage("Build & UT"){
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
 		sh"cd devtest1"
-		sh "${mvnHome}/bin/mvn install"
+		sh "${mvnHome}/bin/mvn clean"
 
 		}
 		
