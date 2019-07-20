@@ -12,6 +12,8 @@ node()
 		def presetdir = pwd()
 		echo "$presetdir"
 		sh "cd ${presetdir}/devtest1"
+		def dire = pwd()
+		echo "$dire"
 		sh "${mvnHome}/bin/mvn clean"
 		
 		}
