@@ -11,6 +11,7 @@ node()
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
 		def presetdir = pwd()
 		echo "$presetdir"
+		sh "cd ${presetdir}/devtest1"
 		sh "${mvnHome}/bin/mvn clean"
 		
 		}
