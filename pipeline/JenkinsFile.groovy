@@ -18,10 +18,13 @@ node()
 			}
 			
 		stage("build & SonarQube analysis") {
-          
+		
+				def directory = "devtest1"
+          dir(directory){
               withSonarQubeEnv('sonar') {
                  sh 'mvn clean package sonar:sonar'
               }
+			  }
           
       }
 
