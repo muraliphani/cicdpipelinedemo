@@ -17,7 +17,7 @@ node()
 					}
 			}
 			
-		stage("build & SonarQube analysis") {
+		/*stage("build & SonarQube analysis") {
 		
 				def directory = "devtest1"
           dir(directory){
@@ -26,7 +26,7 @@ node()
               }
 			  }
           
-      }
+      }*/
 	  
 	  
 	  stage("App deployment"){
