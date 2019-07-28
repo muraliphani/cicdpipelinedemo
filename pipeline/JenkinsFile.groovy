@@ -17,7 +17,7 @@ node()
 					}
 			}
 			
-		stage("build & SonarQube analysis") {
+		/*stage("build & SonarQube analysis") {
 		
 				def directory = "devtest1"
           dir(directory){
@@ -26,7 +26,27 @@ node()
               }
 			  }
           
-      }
+      }*/
+	  
+	  
+	  stage("App deployment"){
+	  def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+	  def directory = "devtest1"
+	  dir(directory){
+		sh "${mvnHome}/bin/mvn clean package"
+	  
+	  	   pushToCloudFoundry(
+                   target: 'https://api.run.pivotal.io',
+                   organization: 'cicdpipeline',
+                   cloudSpace: 'development',
+                   credentialsId: '89671dff-c2c4-4016-a6fe-49904b8563d5',
+                   manifestChoice: [manifestFile: 'manifest.yml']
+                   )
+				 }
+			}	 
+	  
+	  
+	  
 
      
 	}	
