@@ -21,7 +21,7 @@ var sds = document.getElementById("dum");
   
 
 <div id="header">
-	<h1>APANA - BANK<span class="style1"></span></h1>
+	<h1>PEETHI - BANK<span class="style1"></span></h1>
     <h2>ExtraOrdinary Service</h2>
     <A href="index.html"><IMG SRC="images/home1.gif"></IMG></A>	
 </div>
