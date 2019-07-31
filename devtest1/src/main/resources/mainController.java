@@ -10,6 +10,8 @@ public class mainController {
 				System.out.println("enter number");
 		int num = scan.nextInt()
 				System.out.println("entered number is" +num);
+				
+	print()			
 		
 	}
 
