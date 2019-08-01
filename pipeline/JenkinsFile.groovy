@@ -32,7 +32,7 @@ node()
 	  stage('Check Quality Gate') {
         
                 echo 'Checking quality gate...'
-                timeout(time: 1, unit: 'MINUITS') {
+                timeout(time: 1, unit: 'MINUTES') {
                         def swait = waitForQualityGate()
                         if (swait.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${swait.status}"
