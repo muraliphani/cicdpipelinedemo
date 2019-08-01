@@ -7,7 +7,7 @@ node()
 		stage("Checkout SCM"){
 			checkout scm
 			
-		}
+	}
 		
 		stage("Build & UT"){
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
