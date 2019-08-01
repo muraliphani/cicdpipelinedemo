@@ -29,6 +29,17 @@ node()
           
       }
 	  
+	  stage('Check Quality Gate') {
+        
+                echo 'Checking quality gate...'
+                timeout(time: 1, unit: 'HOURS') {
+                        def swait = waitForQualityGate()
+                        if (swait.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${swait.status}"
+                        }
+                 }
+    }
+	  
 	  
 	  stage("App deployment"){
 	  def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
