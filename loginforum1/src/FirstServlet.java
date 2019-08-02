@@ -28,7 +28,7 @@ public class FirstServlet extends HttpServlet {
 			rd.include(request,response);
 		}
 		
-		println();
+		System.out.println("hello");
 		
 		out.close();
 	}
