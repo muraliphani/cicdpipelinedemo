@@ -17,7 +17,7 @@ node()
 					}
 			}
 			
-		stage("build & SonarQube analysis") {
+		stage("SonarQube analysis") {
 		
 				def directory = "Banking"
           dir(directory){
@@ -38,7 +38,7 @@ node()
                             error "Pipeline aborted due to quality gate failure: ${swait.status}"
                         }
                  }
-    }
+		}
 	  
 	  
 	  stage("App deployment"){
@@ -58,9 +58,6 @@ node()
 			}	 
 	  
 	  
-	  
-
-     
 	}	
 
 
