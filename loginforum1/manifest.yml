@@ -2,4 +2,4 @@ applications:
 - name: loginforum1
   memory: 1216M
   instances: 1
-  path: target/loginforum.war
+  path: target/loginforum-0.0.1-SNAPSHOT.war
