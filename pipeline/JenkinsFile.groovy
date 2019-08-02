@@ -46,8 +46,7 @@ node()
 	  def directory = "loginforum1"
 	  dir(directory){
 		sh "${mvnHome}/bin/mvn clean package"
-		sh "cd /var/lib/jenkins/workspace/cicdpipeline/loginforum1/target"
-		sh "ll"
+		
 	  
 	  	   pushToCloudFoundry(
                    target: 'https://api.run.pivotal.io',
