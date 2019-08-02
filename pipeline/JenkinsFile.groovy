@@ -11,7 +11,7 @@ node()
 		
 		stage("Build & UT"){
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-		def directory = "Banking"
+		def directory = "loginforum1"
 		dir(directory){
 		sh "${mvnHome}/bin/mvn install"
 					}
@@ -19,7 +19,7 @@ node()
 			
 		stage("SonarQube analysis") {
 		
-				def directory = "Banking"
+				def directory = "loginforum1"
           dir(directory){
               withSonarQubeEnv('sonar') {
                  sh 'mvn clean package sonar:sonar'
@@ -43,7 +43,7 @@ node()
 	  
 	  stage("App deployment"){
 	  def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-	  def directory = "Banking"
+	  def directory = "loginforum1"
 	  dir(directory){
 		sh "${mvnHome}/bin/mvn clean package"
 	  
