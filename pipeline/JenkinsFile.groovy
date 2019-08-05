@@ -9,20 +9,20 @@ node()
 			
 		}
 		
-		stage("Build & UT"){
+		/*stage("Build & UT"){
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
 		def directory = "loginforum1"
 		dir(directory){
 		sh "${mvnHome}/bin/mvn install"
 					}
-			}
+			}*/
 			
 		stage("SonarQube analysis") {
 		
 				def directory = "loginforum1"
           dir(directory){
               withSonarQubeEnv('sonar') {
-                 sh 'mvn clean package sonar:sonar'
+                 /*sh 'mvn clean package sonar:sonar'*/
 				 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
               }
 			  }
