@@ -28,6 +28,8 @@ public class FirstServlet extends HttpServlet {
 			rd.include(request,response);
 		}
 		
+		System.out.println()
+		
 		
 		out.close();
 	}
