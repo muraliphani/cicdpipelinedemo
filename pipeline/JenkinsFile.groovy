@@ -75,15 +75,7 @@ def getModifiedModules(files)
 	return serviceModuleChanged.toSet()
 }
 
-// Method to get changeSet using git diff 
-def getChangeSet(branchCommit,masterCommit)
-{
-	def changeSets = sh( script: "git diff --name-only ${branchCommit} ${masterCommit}", returnStdout: true )
-	changeSets = changeSets.replaceAll('^\\s+',"");
-	String[] changedFileSets = changeSets.split("\\s+");
 
-	return changedFileSets
-}
 
 
 /** Method to display build */
@@ -110,8 +102,6 @@ node()
 		def mavenHome
 		def currentModules
 	String buildNum = currentBuild.number.toString()
-	Map<String,String> previousVersions=new HashMap<>();
-	Map<String,Integer> map=new HashMap<>();
 	def repo
 	def delimiter = "/"
 	def stageName
@@ -121,10 +111,10 @@ node()
 		
 		stage("Checkout SCM"){
 			checkout scm
-			stageName = "Git clone and setup"
+			//stageName = "Git clone and setup"
 			currentDir = pwd()
-			MiscUtils = load("${currentDir}/pipeline-scripts/utils/MiscUtils.groovy")
-			// Get the commit hash of PR branch 
+			//MiscUtils = load("${currentDir}/pipeline-scripts/utils/MiscUtils.groovy")
+	// Get the commit hash of PR branch 
 	def branchCommit = sh( script: "git rev-parse refs/remotes/${sha1}^{commit}", returnStdout: true )
 	
 	// Get the commit hash of Master branch
@@ -137,20 +127,21 @@ node()
 	
 	def changeSet = getChangeSet(branchCommit,masterCommit)
 	def changedModules = getModifiedModules(changeSet)
-	//def serviceModules = moduleProp['DATA_MODULES']
+	def serviceModules = [devtest1,devtest2,devtest3]
 	serviceModulesList = serviceModules.split(',')
 	currentModules = validateModules(changedModules,serviceModulesList)
 	setDisplayName(buildNum, currentModules)
+	echo "$currentModules"
 			
 		}
 		
-		/*stage("Build & UT"){
+		stage("Build & UT"){
 		def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
 		def directory = "loginforum1"
 		dir(directory){
 		sh "${mvnHome}/bin/mvn install"
 					}
-			}*/
+			}
 			
 		stage("SonarQube analysis") {
 		
