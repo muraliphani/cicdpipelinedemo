@@ -131,7 +131,7 @@ node()
 	serviceModulesList = serviceModules.split(',')
 	currentModules = validateModules(changedModules,serviceModulesList)
 	setDisplayName(buildNum, currentModules)
-	echo "$currentModules"
+	echo "changed modules : $currentModules"
 			
 		}
 		
